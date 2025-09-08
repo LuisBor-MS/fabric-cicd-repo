@@ -1,0 +1,289 @@
+table dimdate
+	lineageTag: 3f76fc77-7263-437a-8ba0-a89ac2353449
+	sourceLineageTag: [dbo].[dimdate]
+
+	column DateKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 4d7f9da0-04b8-407e-98b5-497dddb7f8b6
+		sourceLineageTag: DateKey
+		summarizeBy: none
+		sourceColumn: DateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FullDateAlternateKey
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: f2d36c55-6368-474d-abea-80fac6d24031
+		sourceLineageTag: FullDateAlternateKey
+		summarizeBy: none
+		sourceColumn: FullDateAlternateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayNumberOfWeek
+		dataType: int64
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: b7534ada-b153-4953-a6a6-4978b99fca8a
+		sourceLineageTag: DayNumberOfWeek
+		summarizeBy: none
+		sourceColumn: DayNumberOfWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Name Of Week'
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: 834dc895-d9e7-4e3c-8dbe-ffaa5e8e908a
+		sourceLineageTag: EnglishDayNameOfWeek
+		summarizeBy: none
+		sourceColumn: EnglishDayNameOfWeek
+
+		changedProperty = IsHidden
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column SpanishDayNameOfWeek
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: 5f0df8e8-f838-44a7-82f2-7f20c2fa5def
+		sourceLineageTag: SpanishDayNameOfWeek
+		summarizeBy: none
+		sourceColumn: SpanishDayNameOfWeek
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FrenchDayNameOfWeek
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: 1f3d6020-f827-4344-bdf9-91ef8ddffa5c
+		sourceLineageTag: FrenchDayNameOfWeek
+		summarizeBy: none
+		sourceColumn: FrenchDayNameOfWeek
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Number Of Month'
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: e5b47646-24ec-4846-9dbc-838fcca31da6
+		sourceLineageTag: Day Number Of Month
+		summarizeBy: none
+		sourceColumn: Day Number Of Month
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Number Of Year'
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 74f638f9-2f32-4603-88fc-db63bdc14285
+		sourceLineageTag: Day Number Of Year
+		summarizeBy: none
+		sourceColumn: Day Number Of Year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Number Of Year'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 84aae771-a390-4400-aff4-faf9c882e75d
+		sourceLineageTag: Week Number Of Year
+		summarizeBy: none
+		sourceColumn: Week Number Of Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f459dc39-bca0-4457-a0a6-2e98005766cb
+		sourceLineageTag: Month Name
+		summarizeBy: none
+		sourceColumn: Month Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column SpanishMonthName
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: 156ab146-073e-4f7f-b36f-982d6d99d452
+		sourceLineageTag: SpanishMonthName
+		summarizeBy: none
+		sourceColumn: SpanishMonthName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FrenchMonthName
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: a5490b94-3c9f-4f4b-9664-27c7c07c06b2
+		sourceLineageTag: FrenchMonthName
+		summarizeBy: none
+		sourceColumn: FrenchMonthName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number Of Year'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 413f16a2-ea66-4f19-888d-016c9b656bee
+		sourceLineageTag: Month Number Of Year
+		summarizeBy: none
+		sourceColumn: Month Number Of Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Quarter'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 3edaa8de-f72b-4f39-a73d-647fd29c0c19
+		sourceLineageTag: Calendar Quarter
+		summarizeBy: none
+		sourceColumn: Calendar Quarter
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CalendarYear
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: cc3236ad-857b-4b8e-9556-f75714f02601
+		sourceLineageTag: CalendarYear
+		summarizeBy: none
+		sourceColumn: CalendarYear
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Calendar Semester'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 97672cda-2c14-4927-81ce-bfd8bed0756a
+		sourceLineageTag: Calendar Semester
+		summarizeBy: none
+		sourceColumn: Calendar Semester
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Quarter'
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: aa817dfb-9f89-4f9f-bcd9-bc0d76aeb118
+		sourceLineageTag: Fiscal Quarter
+		summarizeBy: none
+		sourceColumn: Fiscal Quarter
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Year'
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: f288fcba-032b-49c6-9f4a-73bc5b60b914
+		sourceLineageTag: Fiscal Year
+		summarizeBy: none
+		sourceColumn: Fiscal Year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fiscal Semester'
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 781b9518-b012-4b74-afff-d81fcdabe023
+		sourceLineageTag: Fiscal Semester
+		summarizeBy: none
+		sourceColumn: Fiscal Semester
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Day Number Of Year Hierarchy'
+		lineageTag: 362bf771-16ef-4a08-852d-9cd9c692f46c
+
+		level 'Day Number Of Year'
+			lineageTag: 261b3729-6577-4556-88fc-42845de1bb5d
+			column: 'Day Number Of Year'
+
+		level 'Day Number Of Month'
+			lineageTag: e54072fa-bc29-45e7-9ef7-57c67f8ce84f
+			column: 'Day Number Of Month'
+
+		level 'Day Name Of Week'
+			lineageTag: bcb5121e-e059-4f66-98c3-a2b5d271f1d7
+			column: 'Day Name Of Week'
+
+	hierarchy 'Fiscal Year Hierarchy'
+		lineageTag: 1f643012-46a4-469b-9609-b28709e1849a
+
+		level 'Fiscal Year'
+			lineageTag: 37fc8677-df99-4b78-a0e8-b7186075a8d4
+			column: 'Fiscal Year'
+
+		level 'Fiscal Semester'
+			lineageTag: 2ea86d2b-55da-46e4-9984-5307977d109c
+			column: 'Fiscal Semester'
+
+		level 'Fiscal Quarter'
+			lineageTag: bf2de222-7d68-42d3-8bb8-46f9eea23858
+			column: 'Fiscal Quarter'
+
+	partition dimdate = entity
+		mode: directLake
+		source
+			entityName: dimdate
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

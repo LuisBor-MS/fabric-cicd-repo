@@ -1,0 +1,26 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "RemoveDuplicateValuesTDG",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "dimgeography": {
+      "queryId": "2f57e07c-ac57-4785-bf67-c71fa11e6c56",
+      "queryName": "dimgeography"
+    },
+    "dimgeography_DataDestination": {
+      "queryId": "3b9ced32-8b7a-473e-9dad-14fd72eb87cf",
+      "queryName": "dimgeography_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Warehouse",
+      "kind": "Warehouse",
+      "connectionId": "{\"ClusterId\":\"e8044c42-fa88-4f75-b7a4-9c074ace2169\",\"DatasourceId\":\"a6b18d41-e79c-4050-b9bb-a6422de3c78c\"}"
+    }
+  ]
+}

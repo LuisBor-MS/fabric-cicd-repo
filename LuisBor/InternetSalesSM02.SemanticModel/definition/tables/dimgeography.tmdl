@@ -1,0 +1,137 @@
+table dimgeography
+	lineageTag: cce29716-c146-4464-b1b2-5c39f9912bb4
+	sourceLineageTag: [dbo].[dimgeography]
+
+	column GeographyKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 56e01356-fe9a-4a1e-9ce6-e91e4bf06a82
+		sourceLineageTag: GeographyKey
+		summarizeBy: none
+		sourceColumn: GeographyKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d6b42d0c-ffc1-4fe7-bc77-1157ebad2c48
+		sourceLineageTag: City
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State Province Code'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 54e79902-598d-4f9e-8f60-b78dc0d57e55
+		sourceLineageTag: State Province Code
+		summarizeBy: none
+		sourceColumn: State Province Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'State Province Name'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: fbdb53ec-c215-4365-a859-8b9445a25c06
+		sourceLineageTag: State Province Name
+		summarizeBy: none
+		sourceColumn: State Province Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Country Region Code'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b1620e2a-8e31-4734-bed9-24e1c197ce9e
+		sourceLineageTag: Country Region Code
+		summarizeBy: none
+		sourceColumn: Country Region Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Country Region Name'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b8ad3dac-8491-4de3-8a85-401571149ba4
+		sourceLineageTag: Country Region Name
+		summarizeBy: none
+		sourceColumn: Country Region Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column SpanishCountryRegionName
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: f8aad3b4-a471-4fc9-918f-455ebec3f714
+		sourceLineageTag: SpanishCountryRegionName
+		summarizeBy: none
+		sourceColumn: SpanishCountryRegionName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FrenchCountryRegionName
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: 389eef02-8f54-4a35-a184-0810c34f0ebd
+		sourceLineageTag: FrenchCountryRegionName
+		summarizeBy: none
+		sourceColumn: FrenchCountryRegionName
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Postal Code'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 4b54550d-b5e8-44d9-ac7b-ac30f8af3af9
+		sourceLineageTag: Postal Code
+		summarizeBy: none
+		sourceColumn: Postal Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Territory Key'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: c7ce540b-969e-47d6-a00f-731a26b3f417
+		sourceLineageTag: Sales Territory Key
+		summarizeBy: none
+		sourceColumn: Sales Territory Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column IpAddressLocator
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: dd3d98ab-0b53-4204-a3e8-29e0246d2be2
+		sourceLineageTag: IpAddressLocator
+		summarizeBy: none
+		sourceColumn: IpAddressLocator
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimgeography = entity
+		mode: directLake
+		source
+			entityName: dimgeography
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

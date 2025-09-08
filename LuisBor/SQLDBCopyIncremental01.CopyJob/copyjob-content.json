@@ -1,0 +1,1432 @@
+{
+  "properties": {
+    "jobMode": "CDC",
+    "fullLoadBehavior": "None",
+    "source": {
+      "type": "AzureSqlTable",
+      "connectionSettings": {
+        "type": "AzureSqlDatabase",
+        "typeProperties": {
+          "database": "sqldb-demos-luisbor-003"
+        },
+        "externalReferences": {
+          "connection": "a125e4bc-a44d-4b9e-a6db-3a0b29539246"
+        }
+      }
+    },
+    "destination": {
+      "type": "LakehouseTable",
+      "connectionSettings": {
+        "type": "Lakehouse",
+        "typeProperties": {
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "artifactId": "62652d44-43fa-a772-4595-83887afa7a75",
+          "rootFolder": "Tables"
+        }
+      }
+    },
+    "policy": {
+      "timeout": "0.12:00:00"
+    }
+  },
+  "activities": [
+    {
+      "id": "eba2afc3-d8dd-40a2-8cad-dafd7e6bea31",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "dbo",
+            "table": "DimCustomer"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "CustomerKey",
+                "type": "Int32",
+                "physicalType": "int"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "table": "dimcustomer"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator",
+          "mappings": [
+            {
+              "source": {
+                "name": "CustomerKey",
+                "type": "Int32",
+                "physicalType": "int"
+              },
+              "destination": {
+                "name": "CustomerKey",
+                "physicalType": "integer"
+              }
+            },
+            {
+              "source": {
+                "name": "GeographyKey",
+                "type": "Int32",
+                "physicalType": "int"
+              },
+              "destination": {
+                "name": "GeographyKey",
+                "physicalType": "integer"
+              }
+            },
+            {
+              "source": {
+                "name": "CustomerAlternateKey",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "15"
+              },
+              "destination": {
+                "name": "CustomerAlternateKey",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Title",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "8"
+              },
+              "destination": {
+                "name": "Title",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "FirstName",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "50"
+              },
+              "destination": {
+                "name": "FirstName",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "MiddleName",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "50"
+              },
+              "destination": {
+                "name": "MiddleName",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "LastName",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "50"
+              },
+              "destination": {
+                "name": "LastName",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "NameStyle",
+                "type": "Boolean",
+                "physicalType": "bit"
+              },
+              "destination": {
+                "name": "NameStyle",
+                "physicalType": "boolean"
+              }
+            },
+            {
+              "source": {
+                "name": "BirthDate",
+                "type": "DateTime",
+                "physicalType": "date"
+              },
+              "destination": {
+                "name": "BirthDate",
+                "physicalType": "date"
+              }
+            },
+            {
+              "source": {
+                "name": "MaritalStatus",
+                "type": "String",
+                "physicalType": "nchar",
+                "length": "1"
+              },
+              "destination": {
+                "name": "MaritalStatus",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Suffix",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "10"
+              },
+              "destination": {
+                "name": "Suffix",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Gender",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "1"
+              },
+              "destination": {
+                "name": "Gender",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "EmailAddress",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "50"
+              },
+              "destination": {
+                "name": "EmailAddress",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "YearlyIncome",
+                "type": "Decimal",
+                "physicalType": "money",
+                "scale": 4,
+                "precision": 19
+              },
+              "destination": {
+                "name": "YearlyIncome",
+                "physicalType": "decimal",
+                "scale": 2,
+                "precision": 8
+              }
+            },
+            {
+              "source": {
+                "name": "TotalChildren",
+                "type": "Byte",
+                "physicalType": "tinyint"
+              },
+              "destination": {
+                "name": "TotalChildren",
+                "physicalType": "short"
+              }
+            },
+            {
+              "source": {
+                "name": "NumberChildrenAtHome",
+                "type": "Byte",
+                "physicalType": "tinyint"
+              },
+              "destination": {
+                "name": "NumberChildrenAtHome",
+                "physicalType": "short"
+              }
+            },
+            {
+              "source": {
+                "name": "EnglishEducation",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "40"
+              },
+              "destination": {
+                "name": "EnglishEducation",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "SpanishEducation",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "40"
+              },
+              "destination": {
+                "name": "SpanishEducation",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "FrenchEducation",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "40"
+              },
+              "destination": {
+                "name": "FrenchEducation",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "EnglishOccupation",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "100"
+              },
+              "destination": {
+                "name": "EnglishOccupation",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "SpanishOccupation",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "100"
+              },
+              "destination": {
+                "name": "SpanishOccupation",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "FrenchOccupation",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "100"
+              },
+              "destination": {
+                "name": "FrenchOccupation",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "HouseOwnerFlag",
+                "type": "String",
+                "physicalType": "nchar",
+                "length": "1"
+              },
+              "destination": {
+                "name": "HouseOwnerFlag",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "NumberCarsOwned",
+                "type": "Byte",
+                "physicalType": "tinyint"
+              },
+              "destination": {
+                "name": "NumberCarsOwned",
+                "physicalType": "short"
+              }
+            },
+            {
+              "source": {
+                "name": "AddressLine1",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "120"
+              },
+              "destination": {
+                "name": "AddressLine1",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "AddressLine2",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "120"
+              },
+              "destination": {
+                "name": "AddressLine2",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Phone",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "20"
+              },
+              "destination": {
+                "name": "Phone",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "DateFirstPurchase",
+                "type": "DateTime",
+                "physicalType": "date"
+              },
+              "destination": {
+                "name": "DateFirstPurchase",
+                "physicalType": "date"
+              }
+            },
+            {
+              "source": {
+                "name": "CommuteDistance",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "15"
+              },
+              "destination": {
+                "name": "CommuteDistance",
+                "physicalType": "string"
+              }
+            }
+          ]
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "1c894f42-4178-4494-8c0b-ba7a7edc9af1",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "dbo",
+            "table": "DimDate"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "DateKey",
+                "type": "Int32",
+                "physicalType": "int"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "table": "dimdate"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator",
+          "mappings": [
+            {
+              "source": {
+                "name": "DateKey",
+                "type": "Int32",
+                "physicalType": "int"
+              },
+              "destination": {
+                "name": "DateKey",
+                "physicalType": "integer"
+              }
+            },
+            {
+              "source": {
+                "name": "FullDateAlternateKey",
+                "type": "DateTime",
+                "physicalType": "date"
+              },
+              "destination": {
+                "name": "FullDateAlternateKey",
+                "physicalType": "date"
+              }
+            },
+            {
+              "source": {
+                "name": "DayNumberOfWeek",
+                "type": "Byte",
+                "physicalType": "tinyint"
+              },
+              "destination": {
+                "name": "DayNumberOfWeek",
+                "physicalType": "short"
+              }
+            },
+            {
+              "source": {
+                "name": "EnglishDayNameOfWeek",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "10"
+              },
+              "destination": {
+                "name": "EnglishDayNameOfWeek",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "SpanishDayNameOfWeek",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "10"
+              },
+              "destination": {
+                "name": "SpanishDayNameOfWeek",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "FrenchDayNameOfWeek",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "10"
+              },
+              "destination": {
+                "name": "FrenchDayNameOfWeek",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "DayNumberOfMonth",
+                "type": "Byte",
+                "physicalType": "tinyint"
+              },
+              "destination": {
+                "name": "DayNumberOfMonth",
+                "physicalType": "short"
+              }
+            },
+            {
+              "source": {
+                "name": "DayNumberOfYear",
+                "type": "Int16",
+                "physicalType": "smallint"
+              },
+              "destination": {
+                "name": "DayNumberOfYear",
+                "physicalType": "short"
+              }
+            },
+            {
+              "source": {
+                "name": "WeekNumberOfYear",
+                "type": "Byte",
+                "physicalType": "tinyint"
+              },
+              "destination": {
+                "name": "WeekNumberOfYear",
+                "physicalType": "short"
+              }
+            },
+            {
+              "source": {
+                "name": "EnglishMonthName",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "10"
+              },
+              "destination": {
+                "name": "EnglishMonthName",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "SpanishMonthName",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "10"
+              },
+              "destination": {
+                "name": "SpanishMonthName",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "FrenchMonthName",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "10"
+              },
+              "destination": {
+                "name": "FrenchMonthName",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "MonthNumberOfYear",
+                "type": "Byte",
+                "physicalType": "tinyint"
+              },
+              "destination": {
+                "name": "MonthNumberOfYear",
+                "physicalType": "short"
+              }
+            },
+            {
+              "source": {
+                "name": "CalendarQuarter",
+                "type": "Byte",
+                "physicalType": "tinyint"
+              },
+              "destination": {
+                "name": "CalendarQuarter",
+                "physicalType": "short"
+              }
+            },
+            {
+              "source": {
+                "name": "CalendarYear",
+                "type": "Int16",
+                "physicalType": "smallint"
+              },
+              "destination": {
+                "name": "CalendarYear",
+                "physicalType": "short"
+              }
+            },
+            {
+              "source": {
+                "name": "CalendarSemester",
+                "type": "Byte",
+                "physicalType": "tinyint"
+              },
+              "destination": {
+                "name": "CalendarSemester",
+                "physicalType": "short"
+              }
+            },
+            {
+              "source": {
+                "name": "FiscalQuarter",
+                "type": "Byte",
+                "physicalType": "tinyint"
+              },
+              "destination": {
+                "name": "FiscalQuarter",
+                "physicalType": "short"
+              }
+            },
+            {
+              "source": {
+                "name": "FiscalYear",
+                "type": "Int16",
+                "physicalType": "smallint"
+              },
+              "destination": {
+                "name": "FiscalYear",
+                "physicalType": "short"
+              }
+            },
+            {
+              "source": {
+                "name": "FiscalSemester",
+                "type": "Byte",
+                "physicalType": "tinyint"
+              },
+              "destination": {
+                "name": "FiscalSemester",
+                "physicalType": "short"
+              }
+            }
+          ]
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "4557a232-ab63-45df-85a6-2c671772bf39",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "dbo",
+            "table": "DimGeography"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "GeographyKey",
+                "type": "Int32",
+                "physicalType": "int"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "table": "dimgeography"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator",
+          "mappings": [
+            {
+              "source": {
+                "name": "GeographyKey",
+                "type": "Int32",
+                "physicalType": "int"
+              },
+              "destination": {
+                "name": "GeographyKey",
+                "physicalType": "integer"
+              }
+            },
+            {
+              "source": {
+                "name": "City",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "30"
+              },
+              "destination": {
+                "name": "City",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "StateProvinceCode",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "3"
+              },
+              "destination": {
+                "name": "StateProvinceCode",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "StateProvinceName",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "50"
+              },
+              "destination": {
+                "name": "StateProvinceName",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "CountryRegionCode",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "3"
+              },
+              "destination": {
+                "name": "CountryRegionCode",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "EnglishCountryRegionName",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "50"
+              },
+              "destination": {
+                "name": "EnglishCountryRegionName",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "SpanishCountryRegionName",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "50"
+              },
+              "destination": {
+                "name": "SpanishCountryRegionName",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "FrenchCountryRegionName",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "50"
+              },
+              "destination": {
+                "name": "FrenchCountryRegionName",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "PostalCode",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "15"
+              },
+              "destination": {
+                "name": "PostalCode",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "SalesTerritoryKey",
+                "type": "Int32",
+                "physicalType": "int"
+              },
+              "destination": {
+                "name": "SalesTerritoryKey",
+                "physicalType": "integer"
+              }
+            },
+            {
+              "source": {
+                "name": "IpAddressLocator",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "15"
+              },
+              "destination": {
+                "name": "IpAddressLocator",
+                "physicalType": "string"
+              }
+            }
+          ]
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "7401d765-d871-407c-817b-ac9f0d29c4bc",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "dbo",
+            "table": "DimProduct"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "ProductKey",
+                "type": "Int32",
+                "physicalType": "int"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "table": "dimproduct"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator",
+          "mappings": [
+            {
+              "source": {
+                "name": "ProductKey",
+                "type": "Int32",
+                "physicalType": "int"
+              },
+              "destination": {
+                "name": "ProductKey",
+                "physicalType": "integer"
+              }
+            },
+            {
+              "source": {
+                "name": "ProductAlternateKey",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "25"
+              },
+              "destination": {
+                "name": "ProductAlternateKey",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "ProductSubcategoryKey",
+                "type": "Int32",
+                "physicalType": "int"
+              },
+              "destination": {
+                "name": "ProductSubcategoryKey",
+                "physicalType": "integer"
+              }
+            },
+            {
+              "source": {
+                "name": "WeightUnitMeasureCode",
+                "type": "String",
+                "physicalType": "nchar",
+                "length": "3"
+              },
+              "destination": {
+                "name": "WeightUnitMeasureCode",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "SizeUnitMeasureCode",
+                "type": "String",
+                "physicalType": "nchar",
+                "length": "3"
+              },
+              "destination": {
+                "name": "SizeUnitMeasureCode",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "EnglishProductName",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "50"
+              },
+              "destination": {
+                "name": "EnglishProductName",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "SpanishProductName",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "50"
+              },
+              "destination": {
+                "name": "SpanishProductName",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "FrenchProductName",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "50"
+              },
+              "destination": {
+                "name": "FrenchProductName",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "StandardCost",
+                "type": "Decimal",
+                "physicalType": "money",
+                "scale": 4,
+                "precision": 19
+              },
+              "destination": {
+                "name": "StandardCost",
+                "physicalType": "decimal",
+                "scale": 18,
+                "precision": 38
+              }
+            },
+            {
+              "source": {
+                "name": "FinishedGoodsFlag",
+                "type": "Boolean",
+                "physicalType": "bit"
+              },
+              "destination": {
+                "name": "FinishedGoodsFlag",
+                "physicalType": "boolean"
+              }
+            },
+            {
+              "source": {
+                "name": "Color",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "15"
+              },
+              "destination": {
+                "name": "Color",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "SafetyStockLevel",
+                "type": "Int16",
+                "physicalType": "smallint"
+              },
+              "destination": {
+                "name": "SafetyStockLevel",
+                "physicalType": "short"
+              }
+            },
+            {
+              "source": {
+                "name": "ReorderPoint",
+                "type": "Int16",
+                "physicalType": "smallint"
+              },
+              "destination": {
+                "name": "ReorderPoint",
+                "physicalType": "short"
+              }
+            },
+            {
+              "source": {
+                "name": "ListPrice",
+                "type": "Decimal",
+                "physicalType": "money",
+                "scale": 4,
+                "precision": 19
+              },
+              "destination": {
+                "name": "ListPrice",
+                "physicalType": "decimal",
+                "scale": 18,
+                "precision": 38
+              }
+            },
+            {
+              "source": {
+                "name": "Size",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "50"
+              },
+              "destination": {
+                "name": "Size",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "SizeRange",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "50"
+              },
+              "destination": {
+                "name": "SizeRange",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Weight",
+                "type": "Double",
+                "physicalType": "float"
+              },
+              "destination": {
+                "name": "Weight",
+                "physicalType": "double"
+              }
+            },
+            {
+              "source": {
+                "name": "DaysToManufacture",
+                "type": "Int32",
+                "physicalType": "int"
+              },
+              "destination": {
+                "name": "DaysToManufacture",
+                "physicalType": "integer"
+              }
+            },
+            {
+              "source": {
+                "name": "ProductLine",
+                "type": "String",
+                "physicalType": "nchar",
+                "length": "2"
+              },
+              "destination": {
+                "name": "ProductLine",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "DealerPrice",
+                "type": "Decimal",
+                "physicalType": "money",
+                "scale": 4,
+                "precision": 19
+              },
+              "destination": {
+                "name": "DealerPrice",
+                "physicalType": "decimal",
+                "scale": 18,
+                "precision": 38
+              }
+            },
+            {
+              "source": {
+                "name": "Class",
+                "type": "String",
+                "physicalType": "nchar",
+                "length": "2"
+              },
+              "destination": {
+                "name": "Class",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "Style",
+                "type": "String",
+                "physicalType": "nchar",
+                "length": "2"
+              },
+              "destination": {
+                "name": "Style",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "ModelName",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "50"
+              },
+              "destination": {
+                "name": "ModelName",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "EnglishDescription",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "400"
+              },
+              "destination": {
+                "name": "EnglishDescription",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "FrenchDescription",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "400"
+              },
+              "destination": {
+                "name": "FrenchDescription",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "ChineseDescription",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "400"
+              },
+              "destination": {
+                "name": "ChineseDescription",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "ArabicDescription",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "400"
+              },
+              "destination": {
+                "name": "ArabicDescription",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "HebrewDescription",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "400"
+              },
+              "destination": {
+                "name": "HebrewDescription",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "ThaiDescription",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "400"
+              },
+              "destination": {
+                "name": "ThaiDescription",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "GermanDescription",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "400"
+              },
+              "destination": {
+                "name": "GermanDescription",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "JapaneseDescription",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "400"
+              },
+              "destination": {
+                "name": "JapaneseDescription",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "TurkishDescription",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "400"
+              },
+              "destination": {
+                "name": "TurkishDescription",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "StartDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              },
+              "destination": {
+                "name": "StartDate",
+                "physicalType": "timestamp"
+              }
+            },
+            {
+              "source": {
+                "name": "EndDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              },
+              "destination": {
+                "name": "EndDate",
+                "physicalType": "timestamp"
+              }
+            },
+            {
+              "source": {
+                "name": "Status",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "7"
+              },
+              "destination": {
+                "name": "Status",
+                "physicalType": "string"
+              }
+            }
+          ]
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "81163c88-0ae7-48af-b3c6-b7f8ff8dd6af",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "dbo",
+            "table": "DimSalesTerritory"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "SalesTerritoryKey",
+                "type": "Int32",
+                "physicalType": "int"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "table": "dimsalesterritory"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator",
+          "mappings": [
+            {
+              "source": {
+                "name": "SalesTerritoryKey",
+                "type": "Int32",
+                "physicalType": "int"
+              },
+              "destination": {
+                "name": "SalesTerritoryKey",
+                "physicalType": "integer"
+              }
+            },
+            {
+              "source": {
+                "name": "SalesTerritoryAlternateKey",
+                "type": "Int32",
+                "physicalType": "int"
+              },
+              "destination": {
+                "name": "SalesTerritoryAlternateKey",
+                "physicalType": "integer"
+              }
+            },
+            {
+              "source": {
+                "name": "SalesTerritoryRegion",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "50"
+              },
+              "destination": {
+                "name": "SalesTerritoryRegion",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "SalesTerritoryCountry",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "50"
+              },
+              "destination": {
+                "name": "SalesTerritoryCountry",
+                "physicalType": "string"
+              }
+            },
+            {
+              "source": {
+                "name": "SalesTerritoryGroup",
+                "type": "String",
+                "physicalType": "nvarchar",
+                "length": "50"
+              },
+              "destination": {
+                "name": "SalesTerritoryGroup",
+                "physicalType": "string"
+              }
+            }
+          ]
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    },
+    {
+      "id": "6f006f03-3b91-43cc-8ca8-5d1e2788a386",
+      "properties": {
+        "source": {
+          "datasetSettings": {
+            "schema": "dbo",
+            "table": "FactInternetSales"
+          },
+          "changeDataSettings": {
+            "readMethod": "SnapshotPlusIncremental",
+            "columns": [
+              {
+                "name": "OrderDate",
+                "type": "DateTime",
+                "physicalType": "datetime"
+              }
+            ]
+          }
+        },
+        "destination": {
+          "writeBehavior": "Append",
+          "datasetSettings": {
+            "table": "factinternetsales"
+          }
+        },
+        "enableStaging": false,
+        "translator": {
+          "type": "TabularTranslator"
+        },
+        "typeConversionSettings": {
+          "typeConversion": {
+            "allowDataTruncation": true,
+            "treatBooleanAsNumber": false
+          }
+        }
+      }
+    }
+  ]
+}

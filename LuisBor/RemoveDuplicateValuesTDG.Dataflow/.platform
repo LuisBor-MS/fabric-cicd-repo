@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "RemoveDuplicateValuesTDG"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d21119d2-6327-b8a9-4f4a-a6bca61124f7"
+  }
+}
