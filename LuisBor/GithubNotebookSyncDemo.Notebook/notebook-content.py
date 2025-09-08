@@ -1,6 +1,6 @@
 # Fabric notebook source
 # %%
-# AdventureWorks Sales Analysis
+# AdventureWorks Sales Analysi
 # This notebook demonstrates data loading, transformation, and visualization using AdventureWorks data from the Lakehouse `AIAdvWks_Lakehouse`.
 
 # %%
