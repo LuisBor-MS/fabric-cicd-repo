@@ -1,3 +1,4 @@
+# Fabric notebook source
 # %%
 # AdventureWorks Sales Analysis
 # This notebook demonstrates data loading, transformation, and visualization using AdventureWorks data from the Lakehouse `AIAdvWks_Lakehouse`.
@@ -11,6 +12,8 @@ sns.set(style='whitegrid')
 
 # %%
 # Load data from Lakehouse
+# NOTE: Replace 'spark' with the appropriate SparkSession if running outside Fabric
+# Example: from pyspark.sql import SparkSession; spark = SparkSession.builder.getOrCreate()
 dimcustomer = spark.read.table("AIAdvWks_Lakehouse.dimcustomer")
 factinternetsales = spark.read.table("AIAdvWks_Lakehouse.factinternetsales")
 dimgeography = spark.read.table("AIAdvWks_Lakehouse.dimgeography")
