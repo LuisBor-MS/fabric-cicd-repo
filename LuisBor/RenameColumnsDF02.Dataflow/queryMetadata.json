@@ -1,0 +1,71 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "RenameColumns02",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "dimdate": {
+      "queryId": "e28efa28-ae50-4354-85fb-938077d84a53",
+      "queryName": "dimdate"
+    },
+    "dimgeography": {
+      "queryId": "92e033f0-060e-4d9d-9b1a-f1654312b383",
+      "queryName": "dimgeography"
+    },
+    "dimproduct": {
+      "queryId": "d96b3fe6-5136-45e6-9f81-b0050ee60c82",
+      "queryName": "dimproduct"
+    },
+    "dimsalesterritory": {
+      "queryId": "44f0d1c3-1ac8-4adc-b6ff-29f14a32f217",
+      "queryName": "dimsalesterritory"
+    },
+    "factinternetsales": {
+      "queryId": "f1da525a-cf78-4f71-83a1-da629f5de144",
+      "queryName": "factinternetsales"
+    },
+    "dimdate_DataDestination": {
+      "queryId": "9a26d293-7094-439e-8aaf-0afe9a2d2893",
+      "queryName": "dimdate_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "dimgeography_DataDestination": {
+      "queryId": "ad83370f-ff1a-453c-8638-36f82118f284",
+      "queryName": "dimgeography_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "dimproduct_DataDestination": {
+      "queryId": "f7122a07-dee7-4adc-a3f2-4551f01867bb",
+      "queryName": "dimproduct_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "dimsalesterritory_DataDestination": {
+      "queryId": "3c7ae216-7690-4e31-97f4-aac2da590c21",
+      "queryName": "dimsalesterritory_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "factinternetsales_DataDestination": {
+      "queryId": "4d91a938-8ab3-4fe9-84c7-f270b7623612",
+      "queryName": "factinternetsales_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"e8044c42-fa88-4f75-b7a4-9c074ace2169\",\"DatasourceId\":\"d411ea06-7bf1-40d3-809a-bebfa887d70f\"}"
+    },
+    {
+      "path": "Warehouse",
+      "kind": "Warehouse",
+      "connectionId": "{\"ClusterId\":\"e8044c42-fa88-4f75-b7a4-9c074ace2169\",\"DatasourceId\":\"a6b18d41-e79c-4050-b9bb-a6422de3c78c\"}"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "CopyJob",
+    "displayName": "SQLDBCopyIncremental01"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "223f28e3-5582-9d9c-4649-38063c9f6ece"
+  }
+}

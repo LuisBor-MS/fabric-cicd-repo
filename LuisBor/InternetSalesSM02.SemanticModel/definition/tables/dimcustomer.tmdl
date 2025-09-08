@@ -1,0 +1,429 @@
+table dimcustomer
+	lineageTag: 5483c7fe-26f9-46fc-8557-fd4cf6e9d00b
+	sourceLineageTag: [dbo].[dimcustomer]
+
+	measure 'Total Sales' = SUM(FactInternetSales[Sales Amount])
+		lineageTag: d6b91872-4e68-46a2-bb82-e18d37c53290
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average Order Value' = AVERAGEX(VALUES(factinternetsales[Sales Order Number]), [Total Sales])
+		lineageTag: f5245131-94c5-441b-8eeb-57b967d63c5d
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Quantity Sold' = SUM(FactInternetSales[Order Quantity])
+		formatString: 0
+		lineageTag: ef5e7a3b-1f72-49a7-843f-f38ff86bd199
+
+		changedProperty = Name
+
+	measure 'Total Orders' = DISTINCTCOUNT(FactInternetSales[Sales Order Number])
+		formatString: 0
+		lineageTag: ff739984-f364-4b7c-8277-108691be8012
+
+		changedProperty = Name
+
+	measure 'Average Quantity per Order' = DIVIDE([Total Quantity Sold], [Total Orders])
+		lineageTag: 7330777e-f279-45f5-b678-1b59d1241154
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Customer Count' = DISTINCTCOUNT(FactInternetSales[CustomerKey])
+		formatString: 0
+		lineageTag: 708fd98a-bdb2-440e-8bd7-9fa79a32f25e
+
+		changedProperty = Name
+
+	measure 'Total Cost' = SUM(factinternetsales[Total Product Cost])
+		lineageTag: c1ae79eb-5590-443c-a0b1-21ec43ab7948
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Profit' = [Total Sales] - [Total Cost]
+		lineageTag: c908f4c8-8fd5-47b6-a2f7-dec40a895ebd
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Profit Margin %' = DIVIDE([Total Profit], [Total Sales])
+		lineageTag: bf035f76-893a-458d-bbfb-657d78b2cceb
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Last Year' = CALCULATE([Total Sales])
+		lineageTag: ab2e1897-4256-48d8-9949-a577b3643ad9
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales Growth %' = DIVIDE([Total Sales] - [Sales Last Year], [Sales Last Year])
+		lineageTag: 579fd89a-8602-4c3b-b0a3-fd4f0065c9a2
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales per Customer' = DIVIDE([Total Sales], [Customer Count])
+		lineageTag: 5e96392f-532a-4769-91f0-1a277e2240dc
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Sales YTD' = TOTALYTD([Total Sales], 'DimDate'[FullDateAlternateKey])
+		lineageTag: 3c77e687-8e9b-4d48-83e4-0849fee797a0
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CustomerKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 2712502b-282e-4078-8a8b-d1f6a09bc49c
+		sourceLineageTag: CustomerKey
+		summarizeBy: none
+		sourceColumn: CustomerKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column GeographyKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 39cf66cd-3924-49e6-a658-11d760b28511
+		sourceLineageTag: GeographyKey
+		summarizeBy: none
+		sourceColumn: GeographyKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerAlternateKey
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: 958c1459-7287-4c71-8081-a7a33804a9f9
+		sourceLineageTag: CustomerAlternateKey
+		summarizeBy: none
+		sourceColumn: CustomerAlternateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Title
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: b1b2c2f7-fc6f-46ec-85fb-412e4a5e0bda
+		sourceLineageTag: Title
+		summarizeBy: none
+		sourceColumn: Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'First Name'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d64159b6-1810-4051-a4d1-5f5126e4aec3
+		sourceLineageTag: First Name
+		summarizeBy: none
+		sourceColumn: First Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Middle Name'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d786d357-0712-4299-a8ca-fe1d62e52a27
+		sourceLineageTag: Middle Name
+		summarizeBy: none
+		sourceColumn: Middle Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last Name'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: d0013932-dfbc-4f23-937e-1855b04d332a
+		sourceLineageTag: Last Name
+		summarizeBy: none
+		sourceColumn: Last Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Name Style'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: eb74d64c-20db-4df5-8473-90be60c9fe6b
+		sourceLineageTag: Name Style
+		summarizeBy: none
+		sourceColumn: Name Style
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Birth Date'
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: 9594c7d7-4a7b-4522-8f11-18b3e9a84164
+		sourceLineageTag: Birth Date
+		summarizeBy: none
+		sourceColumn: Birth Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Marital Status'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 56eba638-3312-4e22-b6ff-e4d1723e6b66
+		sourceLineageTag: Marital Status
+		summarizeBy: none
+		sourceColumn: Marital Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Suffix
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 7b363017-71eb-44d1-9112-a99ea6681b0d
+		sourceLineageTag: Suffix
+		summarizeBy: none
+		sourceColumn: Suffix
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 78fb9493-5ce5-4867-a673-902d7d9b1822
+		sourceLineageTag: Gender
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Email Address'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: a70cb07d-3946-4459-b9d6-2e937bfdcae8
+		sourceLineageTag: Email Address
+		summarizeBy: none
+		sourceColumn: Email Address
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Yearly Income'
+		dataType: double
+		sourceProviderType: decimal(38, 6)
+		lineageTag: 40b2d6ce-8c97-4747-8059-5cb2528f8cf4
+		sourceLineageTag: Yearly Income
+		summarizeBy: sum
+		sourceColumn: Yearly Income
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Total Children'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 8def8466-5300-406a-9064-31b5fe574c06
+		sourceLineageTag: Total Children
+		summarizeBy: sum
+		sourceColumn: Total Children
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number Children At Home'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 5ad10024-7a05-4be3-b976-e0d2b8c0b6cf
+		sourceLineageTag: Number Children At Home
+		summarizeBy: sum
+		sourceColumn: Number Children At Home
+
+		annotation SummarizationSetBy = Automatic
+
+	column Education
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c4def65e-8094-4b7e-a9a3-0f5093ae4800
+		sourceLineageTag: English Education
+		summarizeBy: none
+		sourceColumn: English Education
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Spanish Education'
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: b1936d87-9499-4987-8398-2a234b0c1f00
+		sourceLineageTag: Spanish Education
+		summarizeBy: none
+		sourceColumn: Spanish Education
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FrenchEducation
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: 74fd475d-b453-4746-8fd6-1dc645997461
+		sourceLineageTag: FrenchEducation
+		summarizeBy: none
+		sourceColumn: FrenchEducation
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Occupation
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: c6f30379-5b57-493d-a2d4-7f22249944c0
+		sourceLineageTag: English Occupation
+		summarizeBy: none
+		sourceColumn: English Occupation
+
+		changedProperty = Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Spanish Occupation'
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: 64f55fb7-9a83-4df4-acb0-a7332d6f8aab
+		sourceLineageTag: Spanish Occupation
+		summarizeBy: none
+		sourceColumn: Spanish Occupation
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column FrenchOccupation
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: a60ebe74-688f-46e9-b3d4-050f9710eb67
+		sourceLineageTag: FrenchOccupation
+		summarizeBy: none
+		sourceColumn: FrenchOccupation
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column HouseOwnerFlag
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: 0e2bb91c-2b5f-4a09-a0bc-53f76d5c3780
+		sourceLineageTag: HouseOwnerFlag
+		summarizeBy: none
+		sourceColumn: HouseOwnerFlag
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number Cars Owned'
+		dataType: int64
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: d4d233cb-84c7-4e3b-8943-92e34442962b
+		sourceLineageTag: Number Cars Owned
+		summarizeBy: sum
+		sourceColumn: Number Cars Owned
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Address Line 1'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: dacfc1ba-6ba8-4c1c-a32d-da2597dc6ebf
+		sourceLineageTag: Address Line 1
+		summarizeBy: none
+		sourceColumn: Address Line 1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Address Line 2'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: ca654bcd-886f-4b36-9847-ea8724e1aa41
+		sourceLineageTag: Address Line 2
+		summarizeBy: none
+		sourceColumn: Address Line 2
+
+		annotation SummarizationSetBy = Automatic
+
+	column Phone
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: 98ee651f-3154-43bf-b295-233db8d87d98
+		sourceLineageTag: Phone
+		summarizeBy: none
+		sourceColumn: Phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date First Purchase'
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: date
+		lineageTag: e3c81355-fe3e-4a7c-9bbb-233ca655e650
+		sourceLineageTag: Date First Purchase
+		summarizeBy: none
+		sourceColumn: Date First Purchase
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Commute Distance'
+		dataType: string
+		sourceProviderType: varchar(8000)
+		lineageTag: f75253c0-add2-4208-adfe-155bbfaa6b7b
+		sourceLineageTag: Commute Distance
+		summarizeBy: none
+		sourceColumn: Commute Distance
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimcustomer = entity
+		mode: directLake
+		source
+			entityName: dimcustomer
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

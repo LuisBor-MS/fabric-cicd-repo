@@ -1,0 +1,20 @@
+relationship c3aecdd1-dedd-42bf-d642-b54ba34efa67
+	fromColumn: factinternetsales.CustomerKey
+	toColumn: dimcustomer.CustomerKey
+
+relationship d455cc3a-c677-b542-605c-12c152a80894
+	fromColumn: factinternetsales.OrderDateKey
+	toColumn: dimdate.DateKey
+
+relationship f443cbec-4b89-abc6-caf3-fa6b0408c0e3
+	fromColumn: dimcustomer.GeographyKey
+	toColumn: dimgeography.GeographyKey
+
+relationship 377f8896-530f-777b-4ffe-de6381eb6370
+	fromColumn: factinternetsales.SalesTerritoryKey
+	toColumn: dimsalesterritory.SalesTerritoryKey
+
+relationship 6ba5b22a-bd4c-4559-dd13-31225f44c9b0
+	fromColumn: factinternetsales.ProductKey
+	toColumn: dimproduct.ProductKey
+

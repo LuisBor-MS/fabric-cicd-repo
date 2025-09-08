@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "DeleteDuplicateKeysPL"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "801e3a58-8f81-84c7-46f5-0e12c17feae5"
+  }
+}

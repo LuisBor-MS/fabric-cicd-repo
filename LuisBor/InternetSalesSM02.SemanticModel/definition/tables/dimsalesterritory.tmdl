@@ -1,0 +1,83 @@
+table dimsalesterritory
+	isHidden
+	lineageTag: 93754a15-72dc-4b47-ae99-ea897ca15886
+	sourceLineageTag: [dbo].[dimsalesterritory]
+
+	column SalesTerritoryKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 1b235f13-25e9-4037-a0ee-aad793dfb406
+		sourceLineageTag: SalesTerritoryKey
+		summarizeBy: none
+		sourceColumn: SalesTerritoryKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryAlternateKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 1f4b9327-0168-45e5-9cc0-61b59eb3757a
+		sourceLineageTag: SalesTerritoryAlternateKey
+		summarizeBy: none
+		sourceColumn: SalesTerritoryAlternateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryRegion
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: 99016375-e2fb-45b2-87ff-3ab6a2315f22
+		sourceLineageTag: SalesTerritoryRegion
+		summarizeBy: none
+		sourceColumn: SalesTerritoryRegion
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryCountry
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: 2c129c03-da55-4a1b-9280-0e0e86368b33
+		sourceLineageTag: SalesTerritoryCountry
+		summarizeBy: none
+		sourceColumn: SalesTerritoryCountry
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SalesTerritoryGroup
+		dataType: string
+		isHidden
+		sourceProviderType: varchar(8000)
+		lineageTag: 4ed33ba8-f7f2-4903-9448-7d4971912970
+		sourceLineageTag: SalesTerritoryGroup
+		summarizeBy: none
+		sourceColumn: SalesTerritoryGroup
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimsalesterritory = entity
+		mode: directLake
+		source
+			entityName: dimsalesterritory
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

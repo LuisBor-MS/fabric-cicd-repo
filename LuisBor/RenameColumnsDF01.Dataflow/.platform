@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Dataflow",
+    "displayName": "RenameColumnsDF01"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1e84ef3a-1771-ad79-47f3-68f4283a1369"
+  }
+}

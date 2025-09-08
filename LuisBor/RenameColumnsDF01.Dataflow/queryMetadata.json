@@ -1,0 +1,31 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "RemoveDuplicateKeys",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "dimcustomerwdr": {
+      "queryId": "f6f71a8a-78ca-4281-8d03-48b3f2493f64",
+      "queryName": "dimcustomerwdr"
+    },
+    "dimcustomerwdr_DataDestination": {
+      "queryId": "ca72b822-6e42-4b09-b5d9-66465e15fbb9",
+      "queryName": "dimcustomerwdr_DataDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"e8044c42-fa88-4f75-b7a4-9c074ace2169\",\"DatasourceId\":\"d411ea06-7bf1-40d3-809a-bebfa887d70f\"}"
+    },
+    {
+      "path": "Warehouse",
+      "kind": "Warehouse",
+      "connectionId": "{\"ClusterId\":\"e8044c42-fa88-4f75-b7a4-9c074ace2169\",\"DatasourceId\":\"a6b18d41-e79c-4050-b9bb-a6422de3c78c\"}"
+    }
+  ]
+}
