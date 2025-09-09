@@ -125,3 +125,22 @@ plt.show()
 # META   "language_group": "synapse_pyspark"
 # META }
 
+# CELL ********************
+
+# Yearly Sales Trend
+sales_data['OrderYear'] = pd.to_datetime(sales_data['OrderDate']).dt.year
+yearly_sales = sales_data.groupby('OrderYear')['SalesAmount'].sum().reset_index()
+plt.figure(figsize=(8, 5))
+sns.lineplot(data=yearly_sales, x='OrderYear', y='SalesAmount', marker='o', color='coral')
+plt.title('Yearly Sales Trend')
+plt.xlabel('Year')
+plt.ylabel('Sales Amount')
+plt.tight_layout()
+plt.show()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
