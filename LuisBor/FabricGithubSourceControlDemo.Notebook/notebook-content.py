@@ -83,4 +83,3 @@ sales_data = pd.merge(sales_data, dimgeography_pd[['GeographyKey', 'City']], on=
 # META   "language": "python",
 # META   "language_group": "synapse_pyspark"
 # META }
-
