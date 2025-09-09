@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
     "type": "Notebook",
-    "displayName": "GithubNotebookSyncDemo",
+    "displayName": "FabricGithubSourceControlDemo",
     "description": "New notebook"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "a611150c-351e-9497-4f65-a3e70bc17063"
+    "logicalId": "1d2fab24-8ad6-a1f9-4b93-8df2501dde13"
   }
 }
