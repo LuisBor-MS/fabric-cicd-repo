@@ -77,7 +77,6 @@ dimgeography_pd = dimgeography.toPandas()
 sales_data = pd.merge(factinternetsales_pd, dimcustomer_pd, on='CustomerKey', how='inner')
 sales_data = pd.merge(sales_data, dimgeography_pd[['GeographyKey', 'City']], on='GeographyKey', how='left')
 
-
 # METADATA ********************
 
 # META {
