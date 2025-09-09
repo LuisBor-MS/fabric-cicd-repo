@@ -77,6 +77,7 @@ dimgeography_pd = dimgeography.toPandas()
 sales_data = pd.merge(factinternetsales_pd, dimcustomer_pd, on='CustomerKey', how='inner')
 sales_data = pd.merge(sales_data, dimgeography_pd[['GeographyKey', 'City']], on='GeographyKey', how='left')
 
+
 # METADATA ********************
 
 # META {
@@ -84,3 +85,62 @@ sales_data = pd.merge(sales_data, dimgeography_pd[['GeographyKey', 'City']], on=
 # META   "language_group": "synapse_pyspark"
 # META }
 
+# CELL ********************
+
+# Sales by City - Top 10
+city_sales = sales_data.groupby('City')['SalesAmount'].sum().reset_index()
+city_sales = city_sales.sort_values(by='SalesAmount', ascending=False).head(10)
+plt.figure(figsize=(12, 6))
+sns.barplot(data=city_sales, x='City', y='SalesAmount', palette='viridis')
+plt.title('Total Sales by City')
+plt.xlabel('City')
+plt.ylabel('Sales Amount')
+plt.xticks(rotation=45, ha='right')
+plt.tight_layout()
+plt.show()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Sales by Gender
+gender_sales = sales_data.groupby('Gender')['SalesAmount'].sum().reset_index()
+plt.figure(figsize=(6, 4))
+sns.barplot(data=gender_sales, x='Gender', y='SalesAmount', palette='pastel')
+plt.title('Total Sales by Gender')
+plt.xlabel('Gender')
+plt.ylabel('Sales Amount')
+plt.tight_layout()
+plt.show()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Yearly Sales Trend
+sales_data['OrderYear'] = pd.to_datetime(sales_data['OrderDate']).dt.year
+yearly_sales = sales_data.groupby('OrderYear')['SalesAmount'].sum().reset_index()
+plt.figure(figsize=(8, 5))
+sns.lineplot(data=yearly_sales, x='OrderYear', y='SalesAmount', marker='o', color='coral')
+plt.title('Yearly Sales Trend')
+plt.xlabel('Year')
+plt.ylabel('Sales Amount')
+plt.tight_layout()
+plt.show()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
